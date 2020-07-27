@@ -27,6 +27,7 @@ function game(playerChoice) {
         case 'pp':
         case 'rr':
             draw(playerChoice);
+            break;
         default:
             lose(playerChoice);
     }

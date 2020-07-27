@@ -8,7 +8,7 @@ function score(){
 setInterval(score, 50);
 
 function game(playerChoice) {
-
+    toggleButtons('disable');
     let gameDisplay = document.getElementById("game-board");
     gameDisplay.style.display="inline-flex";
     var userChoice = document.getElementById("userChoice")
@@ -33,8 +33,9 @@ function game(playerChoice) {
 
     function continueGame() {
         gameDisplay.style.display = "none";
+        toggleButtons('enable');
     }
-    setTimeout(continueGame, 3000);
+    setTimeout(continueGame, 2000);
 }
 
 function show(choice) {
@@ -52,7 +53,7 @@ function win(selectedChoice){
     setTimeout(() => {
     	choiceIcon.classList.add("bn");
         choiceIcon.classList.remove("green");
-    }, 3000);
+    }, 2000);
 }
 
 function draw(selectedChoice){
@@ -63,7 +64,7 @@ function draw(selectedChoice){
     setTimeout(() => {
     	choiceIcon.classList.add("bn");
         choiceIcon.classList.remove("gray");
-    }, 3000);
+    }, 2000);
 }
 
 function lose(selectedChoice){
@@ -75,6 +76,20 @@ function lose(selectedChoice){
     setTimeout(() => {
     	choiceIcon.classList.add("bn");
         choiceIcon.classList.remove("red");
-    }, 3000);
+    }, 2000);
+}
+
+function toggleButtons(action) {
+    let divContent = document.getElementsByClassName("game-choices")[0];
+    let choiceButtons = divContent.getElementsByTagName("button");
+    choiceButtonsList = Array.prototype.slice.call(choiceButtons);
+    choiceButtonsList.forEach(element => {
+        if(action==='disable')
+            element.disabled=true;
+        else if (action==='enable'){
+            element.disabled=false;
+        }
+    });
+
 }
 
